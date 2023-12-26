@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "469769023236",
+    "project_id": "lapor-book-2cc14",
+    "storage_bucket": "lapor-book-2cc14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469769023236:android:051520c146191812b8aa51",
+        "android_client_info": {
+          "package_name": "com.example.lapor_book_12764"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNgQb7_wMqK2gfmacFHcJP_D_549Bg4hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
