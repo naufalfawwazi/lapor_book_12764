@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lapor_book_12764/components/styles.dart';
 import 'package:lapor_book_12764/pages/AllLaporan.dart';
+import 'package:lapor_book_12764/pages/ProfilePage.dart';
 
 import '../models/akun.dart';
 
@@ -85,23 +86,27 @@ class _DashboardFull extends State<DashboardFull> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getAkun();
-    pages = <Widget>[
-      AllLaporan(akun: akun),
-      // MyLaporan(akun: akun),
-      // Profile(akun: akun),
-    ];
   }
 
   @override
   Widget build(BuildContext context) {
+    pages = <Widget>[
+      AllLaporan(akun: akun),
+      // MyLaporan(akun: akun),
+      Profile(akun: akun), //TODO: Remove this line and uncomment line above
+      Profile(akun: akun),
+    ];
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         child: Icon(Icons.add, size: 35),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/add', arguments: {
+            'akun': akun,
+          });
+        },
       ),
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -111,7 +116,7 @@ class _DashboardFull extends State<DashboardFull> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: primaryColor,
         currentIndex: _selectedIndex,
-        onTap: (index) {},
+        onTap: _onItemTapped,
         selectedItemColor: Colors.white,
         selectedFontSize: 16,
         unselectedItemColor: Colors.grey[800],
