@@ -33,7 +33,7 @@ class AddFormState extends State<AddFormPage> {
 
   Image imagePreview() {
     if (file == null) {
-      return Image.asset('assets/istock-default.jpg', width: 180, height: 180);
+      return Image.asset('assets/bg-default.png', width: 180, height: 180);
     } else {
       return Image.file(File(file!.path), width: 180, height: 180);
     }
@@ -205,20 +205,6 @@ class AddFormState extends State<AddFormPage> {
                         onPressed: () {
                           uploadDialog(context);
                         },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.photo_camera),
-                            Text(' Foto Pendukung',
-                                style: headerStyle(level: 3)),
-                          ],
-                        )),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: ElevatedButton(
-                        onPressed: () {},
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
