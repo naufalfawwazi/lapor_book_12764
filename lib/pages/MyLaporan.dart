@@ -1,19 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lapor_book_12764/components/list_item.dart';
 import 'package:lapor_book_12764/models/akun.dart';
 import 'package:lapor_book_12764/models/laporan.dart';
 
-class AllLaporan extends StatefulWidget {
+class MyLaporan extends StatefulWidget {
   final Akun akun;
 
-  AllLaporan({super.key, required this.akun});
+  MyLaporan({super.key, required this.akun});
 
   @override
-  State<AllLaporan> createState() => _AllLaporanState();
+  State<MyLaporan> createState() => _MyLaporanState();
 }
 
-class _AllLaporanState extends State<AllLaporan> {
+class _MyLaporanState extends State<MyLaporan> {
   final _db = FirebaseFirestore.instance;
 
   List<Laporan> listLaporan = [];
@@ -21,7 +22,7 @@ class _AllLaporanState extends State<AllLaporan> {
   void getLaporan() async {
     try {
       QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await _db.collection('laporan').get();
+      await _db.collection('laporan').where('uid', isEqualTo: widget.akun.uid).get();
 
       setState(() {
         listLaporan.clear();
@@ -57,12 +58,12 @@ class _AllLaporanState extends State<AllLaporan> {
       child: Container(
         margin: EdgeInsets.all(20),
         child: GridView.builder(
-          shrinkWrap: true,
+            shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1/1.232
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1/1.232
             ),
             itemCount: listLaporan.length,
             itemBuilder: (context, index) {
