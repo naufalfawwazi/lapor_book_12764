@@ -68,7 +68,9 @@ class _MyLaporanState extends State<MyLaporan> {
             itemCount: listLaporan.length,
             itemBuilder: (context, index) {
               return ListItem(
+                akun: widget.akun,
                 laporan: listLaporan[index],
+                isLaporanku: true,
               );
             }),
       ),
