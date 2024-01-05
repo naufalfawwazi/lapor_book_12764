@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lapor_book_12764/components/styles.dart';
 import 'package:lapor_book_12764/pages/AllLaporan.dart';
+import 'package:lapor_book_12764/pages/MyLaporan.dart';
 import 'package:lapor_book_12764/pages/ProfilePage.dart';
 
 import '../models/akun.dart';
@@ -94,8 +95,7 @@ class _DashboardFull extends State<DashboardFull> {
   Widget build(BuildContext context) {
     pages = <Widget>[
       AllLaporan(akun: akun),
-      // MyLaporan(akun: akun),
-      Profile(akun: akun), //TODO: Remove this line and uncomment line above
+      MyLaporan(akun: akun),
       Profile(akun: akun),
     ];
     return Scaffold(
