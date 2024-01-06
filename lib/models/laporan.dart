@@ -10,7 +10,8 @@ class Laporan {
   final String status;
   final DateTime tanggal;
   final String maps;
-  List<Komentar>? komentar;
+  List<String>? likeUid;
+  List<DateTime>? likeTimestamp;
 
   Laporan({
     required this.uid,
@@ -23,17 +24,8 @@ class Laporan {
     required this.status,
     required this.tanggal,
     required this.maps,
-    this.komentar,
-  });
-}
-
-class Komentar {
-  final String nama;
-  final String isi;
-
-  Komentar({
-    required this.nama,
-    required this.isi,
+    this.likeUid,
+    this.likeTimestamp,
   });
 }
 

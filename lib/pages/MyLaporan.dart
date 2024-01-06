@@ -27,7 +27,7 @@ class _MyLaporanState extends State<MyLaporan> {
       setState(() {
         listLaporan.clear();
         for (var documents in querySnapshot.docs) {
-          listLaporan.add(Laporan(
+          Laporan currentLaporan = Laporan(
               uid: documents.data()['uid'],
               docId: documents.data()['docId'],
               judul: documents.data()['judul'],
@@ -37,7 +37,25 @@ class _MyLaporanState extends State<MyLaporan> {
               tanggal: documents.data()['tanggal'].toDate(),
               maps: documents.data()['maps'],
               deskripsi: documents.data()['deskripsi'],
-              gambar: documents.data()['gambar']));
+              gambar: documents.data()['gambar']
+          );
+
+          currentLaporan.likeUid = [];
+          if (documents.data().containsKey('likeUid')) {
+            for (var uid in documents.data()['likeUid']) {
+              currentLaporan.likeUid?.add(uid);
+            }
+          }
+
+          currentLaporan.likeTimestamp = [];
+          if (documents.data().containsKey('likeTimestamp')) {
+            for (var timestamp in documents.data()['likeTimestamp']) {
+              Timestamp currentTimestamp = timestamp;
+              currentLaporan.likeTimestamp?.add(currentTimestamp.toDate());
+            }
+          }
+
+          listLaporan.add(currentLaporan);
         }
       });
     } catch (e) {
