@@ -5,6 +5,8 @@ import '../components/validators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<StatefulWidget> createState() => LoginPageState();
 }
@@ -53,11 +55,9 @@ class LoginPageState extends State<LoginPage> {
                   children: [
                     const SizedBox(height: 80),
                     Text('Login', style: headerStyle()),
-                    Container(
-                      child: const Text(
-                        'Login to your account',
-                        style: TextStyle(color: Colors.grey),
-                      ),
+                    const Text(
+                      'Login to your account',
+                      style: TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(height: 50),
                     Container(

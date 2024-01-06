@@ -44,7 +44,7 @@ class _StatusDialogState extends State<StatusDialog> {
         backgroundColor: primaryColor,
         content: Container(
           height: 320,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -55,11 +55,11 @@ class _StatusDialogState extends State<StatusDialog> {
                 widget.laporan.judul,
                 style: headerStyle(level: 3),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               RadioListTile(
-                title: Text("Posted"),
+                title: const Text("Posted"),
                 value: "Posted",
                 groupValue: status,
                 onChanged: (value) {
@@ -69,7 +69,7 @@ class _StatusDialogState extends State<StatusDialog> {
                 },
               ),
               RadioListTile(
-                title: Text("Process"),
+                title: const Text("Process"),
                 value: "Process",
                 groupValue: status,
                 onChanged: (value) {
@@ -79,7 +79,7 @@ class _StatusDialogState extends State<StatusDialog> {
                 },
               ),
               RadioListTile(
-                title: Text("Done"),
+                title: const Text("Done"),
                 value: "Done",
                 groupValue: status,
                 onChanged: (value) {
@@ -88,7 +88,7 @@ class _StatusDialogState extends State<StatusDialog> {
                   });
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               ElevatedButton(
@@ -100,7 +100,7 @@ class _StatusDialogState extends State<StatusDialog> {
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                child: Text("Ubah Status"),
+                child: const Text("Ubah Status"),
               ),
             ],
           ),

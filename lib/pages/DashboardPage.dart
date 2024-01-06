@@ -13,7 +13,7 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DashboardFull();
+    return const DashboardFull();
   }
 }
 
@@ -101,7 +101,7 @@ class _DashboardFull extends State<DashboardFull> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
-        child: Icon(Icons.add, size: 35),
+        child: const Icon(Icons.add, size: 35),
         onPressed: () {
           Navigator.pushNamed(context, '/add', arguments: {
             'akun': akun,

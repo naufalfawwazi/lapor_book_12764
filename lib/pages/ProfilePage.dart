@@ -82,7 +82,7 @@ class _ProfileState extends State<Profile> {
             const SizedBox(
               height: 35,
             ),
-            Container(
+            SizedBox(
               width: double.infinity,
               child: FilledButton(
                 style: buttonStyle,

@@ -69,14 +69,14 @@ class _DetailPageState extends State<DetailPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.all(30),
+            margin: const EdgeInsets.all(30),
             child: Column(
               children: [
                 Text(
                   laporan.judul,
                   style: headerStyle(level: 2),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 laporan.gambar != ''
@@ -84,7 +84,7 @@ class _DetailPageState extends State<DetailPage> {
                     : Image.asset(
                         'assets/bg-default.png',
                       ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 if (!laporan.likeUid!.contains(akun.uid))
@@ -92,7 +92,7 @@ class _DetailPageState extends State<DetailPage> {
                     onPressed: () {
                       updateLike();
                     },
-                    icon: Icon(Icons.favorite),
+                    icon: const Icon(Icons.favorite),
                   ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,42 +108,42 @@ class _DetailPageState extends State<DetailPage> {
                     textStatus(laporan.instansi, Colors.white, Colors.black)
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ListTile(
-                  title: Text("Nama Pelapor"),
+                  title: const Text("Nama Pelapor"),
                   subtitle: Text(laporan.nama),
-                  leading: Icon(Icons.person),
+                  leading: const Icon(Icons.person),
                 ),
                 ListTile(
-                  title: Text("Tanggal Laporan"),
+                  title: const Text("Tanggal Laporan"),
                   subtitle:
                       Text(DateFormat('dd MMMM yyyy').format(laporan.tanggal)),
-                  leading: Icon(Icons.date_range),
+                  leading: const Icon(Icons.date_range),
                   trailing: IconButton(
                     onPressed: () {
                       launch(laporan.maps);
                     },
-                    icon: Icon(Icons.location_on),
+                    icon: const Icon(Icons.location_on),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
                   "Deskripsi",
                   style: headerStyle(level: 2),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Text(laporan.deskripsi ?? ''),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 if (akun.role == 'admin')
-                  Container(
+                  SizedBox(
                     width: 250,
                     child: ElevatedButton(
                       onPressed: () {
@@ -161,7 +161,7 @@ class _DetailPageState extends State<DetailPage> {
                           backgroundColor: primaryColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10))),
-                      child: Text("Ubah Status"),
+                      child: const Text("Ubah Status"),
                     ),
                   )
               ],
@@ -179,7 +179,7 @@ class _DetailPageState extends State<DetailPage> {
       decoration: BoxDecoration(
           color: bgColor,
           border: Border.all(width: 1, color: primaryColor),
-          borderRadius: BorderRadius.all(Radius.circular(15))),
+          borderRadius: const BorderRadius.all(Radius.circular(15))),
       child: Text(
         text,
         style: TextStyle(

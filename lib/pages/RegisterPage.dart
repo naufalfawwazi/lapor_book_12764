@@ -76,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 80),
+                    const SizedBox(height: 80),
                     Text('Register', style: headerStyle(level: 1)),
                     Container(
                       child: const Text(
@@ -84,9 +84,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
                           key: _formKey,
                           child: Column(
@@ -134,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       obscureText: true,
                                       decoration: customInputDecoration(""))),
                               Container(
-                                margin: EdgeInsets.only(top: 20),
+                                margin: const EdgeInsets.only(top: 20),
                                 width: double.infinity,
                                 child: FilledButton(
                                     style: buttonStyle,

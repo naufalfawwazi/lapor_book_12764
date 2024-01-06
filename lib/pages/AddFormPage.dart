@@ -44,7 +44,7 @@ class AddFormState extends State<AddFormPage> {
         context: context,
         builder: (BuildContext) {
           return AlertDialog(
-            title: Text('Pilih sumber '),
+            title: const Text('Pilih sumber'),
             actions: [
               TextButton(
                 onPressed: () async {
@@ -182,7 +182,7 @@ class AddFormState extends State<AddFormPage> {
             : SingleChildScrollView(
           child: Form(
             child: Container(
-              margin: EdgeInsets.all(40),
+              margin: const EdgeInsets.all(40),
               child: Column(
                 children: [
                   InputLayout(
@@ -195,12 +195,12 @@ class AddFormState extends State<AddFormPage> {
                           decoration:
                           customInputDecoration("Judul laporan"))),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: imagePreview(),
                   ),
                   Container(
                     width: double.infinity,
-                    margin: EdgeInsets.only(bottom: 10),
+                    margin: const EdgeInsets.only(bottom: 10),
                     child: ElevatedButton(
                         onPressed: () {
                           uploadDialog(context);
@@ -208,7 +208,7 @@ class AddFormState extends State<AddFormPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.photo_camera),
+                            const Icon(Icons.photo_camera),
                             Text(' Foto Pendukung',
                                 style: headerStyle(level: 3)),
                           ],
@@ -239,8 +239,8 @@ class AddFormState extends State<AddFormPage> {
                         decoration: customInputDecoration(
                             'Deskripsikan semua di sini'),
                       )),
-                  SizedBox(height: 30),
-                  Container(
+                  const SizedBox(height: 30),
+                  SizedBox(
                     width: double.infinity,
                     child: FilledButton(
                         style: buttonStyle,
