@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lapor_book_12764/components/styles.dart';
 import 'package:lapor_book_12764/components/vars.dart';
 import 'package:lapor_book_12764/models/akun.dart';
