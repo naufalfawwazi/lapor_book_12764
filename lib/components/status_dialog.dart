@@ -24,7 +24,7 @@ class _StatusDialogState extends State<StatusDialog> {
       await laporanCollection
           .doc(widget.laporan.docId)
           .update({'status': status});
-      Navigator.pushNamed(context, '/dashboard');
+      Navigator.pushReplacementNamed(context, '/dashboard');
     } catch (e) {
       print(e);
     }

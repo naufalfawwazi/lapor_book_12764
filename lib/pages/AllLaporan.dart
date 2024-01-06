@@ -26,17 +26,35 @@ class _AllLaporanState extends State<AllLaporan> {
       setState(() {
         listLaporan.clear();
         for (var documents in querySnapshot.docs) {
-          listLaporan.add(Laporan(
-              uid: documents.data()['uid'],
-              docId: documents.data()['docId'],
-              judul: documents.data()['judul'],
-              instansi: documents.data()['instansi'],
-              nama: documents.data()['nama'],
-              status: documents.data()['status'],
-              tanggal: documents.data()['tanggal'].toDate(),
-              maps: documents.data()['maps'],
-              deskripsi: documents.data()['deskripsi'],
-              gambar: documents.data()['gambar']));
+          Laporan currentLaporan = Laporan(
+            uid: documents.data()['uid'],
+            docId: documents.data()['docId'],
+            judul: documents.data()['judul'],
+            instansi: documents.data()['instansi'],
+            nama: documents.data()['nama'],
+            status: documents.data()['status'],
+            tanggal: documents.data()['tanggal'].toDate(),
+            maps: documents.data()['maps'],
+            deskripsi: documents.data()['deskripsi'],
+            gambar: documents.data()['gambar']
+          );
+
+          currentLaporan.likeUid = [];
+          if (documents.data().containsKey('likeUid')) {
+            for (var uid in documents.data()['likeUid']) {
+              currentLaporan.likeUid?.add(uid);
+            }
+          }
+
+          currentLaporan.likeTimestamp = [];
+          if (documents.data().containsKey('likeTimestamp')) {
+            for (var timestamp in documents.data()['likeTimestamp']) {
+              Timestamp currentTimestamp = timestamp;
+              currentLaporan.likeTimestamp?.add(currentTimestamp.toDate());
+            }
+          }
+
+          listLaporan.add(currentLaporan);
         }
       });
     } catch (e) {
@@ -55,15 +73,14 @@ class _AllLaporanState extends State<AllLaporan> {
     getLaporan();
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.all(20),
+        margin: const EdgeInsets.all(20),
         child: GridView.builder(
-          shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1/1.232
-            ),
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1 / 1.232),
             itemCount: listLaporan.length,
             itemBuilder: (context, index) {
               return ListItem(

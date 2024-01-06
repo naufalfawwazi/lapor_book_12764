@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lapor_book_12764/components/status_dialog.dart';
@@ -22,12 +23,36 @@ class _DetailPageState extends State<DetailPage> {
     }
   }
 
+  late Laporan laporan;
+  late Akun akun;
+  final _db = FirebaseFirestore.instance;
+
+  void updateLike() async {
+    try {
+      CollectionReference laporanCollection = _db.collection('laporan');
+      Timestamp timestamp = Timestamp.fromDate(DateTime.now());
+
+      laporan.likeUid?.add(akun.uid);
+      laporan.likeTimestamp?.add(timestamp.toDate());
+
+      await laporanCollection
+          .doc(laporan.docId)
+          .update({
+            'likeUid': laporan.likeUid,
+            'likeTimestamp': laporan.likeTimestamp,
+          });
+      Navigator.pushReplacementNamed(context, '/dashboard');
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final Akun akun = arguments['akun'];
-    final Laporan laporan = arguments['laporan'];
+    akun = arguments['akun'];
+    laporan = arguments['laporan'];
 
     return Scaffold(
       appBar: AppBar(
@@ -62,16 +87,24 @@ class _DetailPageState extends State<DetailPage> {
                 SizedBox(
                   height: 15,
                 ),
+                if (!laporan.likeUid!.contains(akun.uid))
+                  IconButton(
+                    onPressed: () {
+                      updateLike();
+                    },
+                    icon: Icon(Icons.favorite),
+                  ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     textStatus(
-                      laporan.status,
-                      laporan.status == 'Posted'
-                          ? warnaStatus[0] : laporan.status == 'Process'
-                          ? warnaStatus[1] : warnaStatus[2],
-                      Colors.white
-                    ),
+                        laporan.status,
+                        laporan.status == 'Posted'
+                            ? warnaStatus[0]
+                            : laporan.status == 'Process'
+                                ? warnaStatus[1]
+                                : warnaStatus[2],
+                        Colors.white),
                     textStatus(laporan.instansi, Colors.white, Colors.black)
                   ],
                 ),

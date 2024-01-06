@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:lapor_book_12764/components/styles.dart';
 import 'package:lapor_book_12764/components/vars.dart';
@@ -46,7 +45,7 @@ class _ListItemState extends State<ListItem> {
     return Container(
         decoration: BoxDecoration(
           border: Border.all(width: 2),
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: InkWell(
           onTap: () {
@@ -67,14 +66,14 @@ class _ListItemState extends State<ListItem> {
                           onPressed: () {
                             Navigator.pop(buildContext);
                           },
-                          child: Text("Cancel"),
+                          child: const Text("Cancel"),
                         ),
                         TextButton(
                           onPressed: () {
                             delete();
                             Navigator.pop(buildContext);
                           },
-                          child: Text("Hapus"),
+                          child: const Text("Hapus"),
                         ),
                       ],
                     );
@@ -98,8 +97,8 @@ class _ListItemState extends State<ListItem> {
               Container(
                 width: double.infinity,
                 alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                decoration: const BoxDecoration(
                   border: Border.symmetric(horizontal: BorderSide(width: 2)),
                 ),
                 child: Text(
@@ -112,17 +111,17 @@ class _ListItemState extends State<ListItem> {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
                           color: widget.laporan.status == 'Posted'
                               ? warnaStatus[0]
                               : widget.laporan.status == 'Process'
                                   ? warnaStatus[1]
                                   : warnaStatus[2],
-                          border: Border(
+                          border: const Border(
                             right: BorderSide(width: 2),
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(8))),
                       child: Text(
                         widget.laporan.status,
@@ -133,15 +132,15 @@ class _ListItemState extends State<ListItem> {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(vertical: 8),
-                      child: Text(
-                        DateFormat('dd/MM/yyyy').format(widget.laporan.tanggal),
-                        style: headerStyle(level: 5, dark: false),
-                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
                           color: successColor,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               bottomRight: Radius.circular(8))),
+                      child: Text(
+                        "${widget.laporan.likeUid?.length} Suka",
+                        style: headerStyle(level: 5, dark: false),
+                      ),
                     ),
                   )
                 ],
